@@ -1,0 +1,26 @@
+Index: app/stepTracker/stepTracker.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/stepTracker/stepTracker.js	(revision )
++++ app/stepTracker/stepTracker.js	(revision )
+@@ -0,0 +1,18 @@
++/**
++ * Created by ksl5137 on 1/10/16.
++ */
++'use strict';
++
++angular.module('stepTracker')
++.controller('StepTrackerController', ['$scope', function($scope) {
++
++    var startStepTracker = function() {
++
++    };
++
++    var init = function() {
++      startStepTracker();
++    };
++
++    init();
++  }]);
