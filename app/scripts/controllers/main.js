@@ -8,13 +8,14 @@
  * Controller of the sandboxApp
  */
 angular.module('sandboxApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', function ($scope, $interval) {
     var vm = this;
     vm.currentSteps = 0;
     vm.goal = 0;
     vm.stepBank = 0;
     vm.currentPercentage = 0;
-    $scope.date= new Date();
+    vm.hungerScore = 100;
+    vm.mood;
 
 
     var startStepTracker = function() {
@@ -22,6 +23,11 @@ angular.module('sandboxApp')
       vm.goal = 10000;
       vm.stepBank = vm.currentSteps + 2450;
       vm.currentPercentage = vm.currentSteps / vm.goal *100;
+
+      $interval(function () {
+        //Don't let this run during bedtime
+        vm.hungerScore -= 50;
+      }, 3000, 3);
 
     };
 
@@ -34,12 +40,25 @@ angular.module('sandboxApp')
 
     vm.feedFitty = function feedFitty(){
       vm.stepBank -= 2000;
+      vm.hungerScore += 50;
+
 
     };
+
+    $scope.$watch('vm.hungerScore', function (newScore) {
+      vm.mood = newScore <= 50 ? 'Hungry' : 'Happy';
+
+    });
 
     var init = function() {
       startStepTracker();
     };
+
+    function setMood() { //Use this later?
+      var moodOptions = ['Hungry', 'Hangry', 'Thirsty', 'Bored', 'Lonely', 'Happy'];
+      //maybe set this as object with type, label, and scores associated to trigger?
+
+    }
 
     init();
 
