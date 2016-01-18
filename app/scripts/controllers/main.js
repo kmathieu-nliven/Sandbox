@@ -8,7 +8,7 @@
  * Controller of the sandboxApp
  */
 angular.module('sandboxApp')
-  .controller('MainCtrl', function ($scope, $interval) {
+  .controller('MainCtrl', function ($scope, $interval, Restangular) {
     var vm = this;
     vm.currentSteps = 0;
     vm.goal = 0;

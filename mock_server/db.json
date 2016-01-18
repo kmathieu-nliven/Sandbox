@@ -1,19 +1,13 @@
 {
-  "posts": [
+  "users": [
     {
       "id": 1,
-      "title": "json-server",
-      "author": "typicode"
+      "currentSteps": 5000,
+      "goal": 10000,
+      "stepBank": 7500,
+      "currentPercentage": 75,
+      "hungerScore": 100,
+      "mood": "happy"
     }
-  ],
-  "comments": [
-    {
-      "id": 1,
-      "body": "some comment",
-      "postId": 1
-    }
-  ],
-  "profile": {
-    "name": "typicode"
-  }
+  ]
 }
