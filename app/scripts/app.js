@@ -19,7 +19,7 @@ angular
     'ui.bootstrap',
     'restangular'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, RestangularProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -32,4 +32,11 @@ angular
       .otherwise({
         redirectTo: '/'
       });
+
+    RestangularProvider.setBaseUrl('http://' + window.location.hostname + ':3000');
   });
+//.config(function (RestangularProvider) {
+//  // provider configurations
+//  RestangularProvider.setBaseUrl('http://' + window.location.hostname + ':3000');
+//  RestangularProvider.setDefaultHttpFields({cache: true});
+//});
