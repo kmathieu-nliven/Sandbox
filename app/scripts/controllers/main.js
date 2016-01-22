@@ -9,6 +9,7 @@
  */
 angular.module('sandboxApp')
   .controller('MainCtrl', function ($scope, $interval, Restangular) {
+  //.controller('MainCtrl', function (usersData, UsersSvc, $scope, $interval, Restangular) {
     var vm = this;
     vm.currentSteps = 0;
     vm.goal = 0;
@@ -16,16 +17,22 @@ angular.module('sandboxApp')
     vm.currentPercentage = 0;
     vm.hungerScore = 100;
     vm.mood;
+    vm.allUsers;
 
 
     var startStepTracker = function() {
+
+      Restangular.all('users').getList().then(function(data){
+        vm.allUsers = data.plain();
+      });
+
       vm.currentSteps = 5000;
       vm.goal = 10000;
       vm.stepBank = vm.currentSteps + 2450;
       vm.currentPercentage = vm.currentSteps / vm.goal *100;
 
       $interval(function () {
-        //Don't let this run during bedtime
+        //TODO: Don't let this run during bedtime
         vm.hungerScore -= 50;
       }, 3000, 3);
 
@@ -56,7 +63,7 @@ angular.module('sandboxApp')
 
     function setMood() { //Use this later?
       var moodOptions = ['Hungry', 'Hangry', 'Thirsty', 'Bored', 'Lonely', 'Happy'];
-      //maybe set this as object with type, label, and scores associated to trigger?
+      //TODO:  maybe set this as object with type, label, and scores associated to trigger?
 
     }
 

@@ -23,7 +23,15 @@ angular
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'MainCtrl',
+        //controllerAs: 'vm',
+        //resolve: {
+        //  usersData: ['UsersSvc', function(UsersSvc) {
+        //    return UsersSvc.getList().then(function(data) {
+        //      return data;
+        //    });
+        //  }]
+        //}
       })
       .when('/about', {
         templateUrl: 'views/about.html',
@@ -33,7 +41,8 @@ angular
         redirectTo: '/'
       });
 
-    RestangularProvider.setBaseUrl('http://' + window.location.hostname + ':3000');
+    //RestangularProvider.setBaseUrl('http://' + window.location.hostname + ':3000');
+    RestangularProvider.setBaseUrl('http://localhost:3000');
   });
 //.config(function (RestangularProvider) {
 //  // provider configurations
