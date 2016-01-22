@@ -25,13 +25,13 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         //controllerAs: 'vm',
-        //resolve: {
-        //  usersData: ['UsersSvc', function(UsersSvc) {
-        //    return UsersSvc.getList().then(function(data) {
-        //      return data;
-        //    });
-        //  }]
-        //}
+        resolve: {
+          usersData: ['UsersSvc', function(UsersSvc) {
+            return UsersSvc.getList().then(function(data) {
+              return data;
+            });
+          }]
+        }
       })
       .when('/about', {
         templateUrl: 'views/about.html',

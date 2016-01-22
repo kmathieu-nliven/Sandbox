@@ -8,8 +8,8 @@
  * Controller of the sandboxApp
  */
 angular.module('sandboxApp')
-  .controller('MainCtrl', function ($scope, $interval, Restangular) {
-  //.controller('MainCtrl', function (usersData, UsersSvc, $scope, $interval, Restangular) {
+  //.controller('MainCtrl', function ($scope, $interval, Restangular) {
+  .controller('MainCtrl', function (UsersSvc, $scope, $interval, Restangular) {
     var vm = this;
     vm.currentSteps = 0;
     vm.goal = 0;
@@ -18,12 +18,19 @@ angular.module('sandboxApp')
     vm.hungerScore = 100;
     vm.mood;
     vm.allUsers;
+    vm.test;
 
 
     var startStepTracker = function() {
 
+      //works
       Restangular.all('users').getList().then(function(data){
         vm.allUsers = data.plain();
+      });
+
+      //works
+      vm.test = UsersSvc.getList().then(function(data){
+        vm.test = data;
       });
 
       vm.currentSteps = 5000;
