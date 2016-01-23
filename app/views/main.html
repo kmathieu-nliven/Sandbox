@@ -16,7 +16,7 @@
     <div class="progress-bar" role="progressbar" aria-valuenow={{vm.currentSteps}} aria-valuemin="0" aria-valuemax={{vm.goal}}
          style="width: {{vm.currentPercentage}}%;">{{vm.currentSteps}} steps</div>
   </div>
-  <button ng-click="vm.addSteps()" class="btn btn-default btn-sm" type="button">Add steps</button>
+  <button ng-if="vm.moreUpdatesAvail" ng-click="vm.addSteps()" class="btn btn-default btn-sm" type="button">Refresh Fitbit Steps</button>
 
   <div class="jumbotron">
     <img src="images/blue_blob_pet.png" alt="Fitty"><br>
