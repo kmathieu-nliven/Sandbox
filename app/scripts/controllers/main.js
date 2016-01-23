@@ -8,8 +8,14 @@
  * Controller of the sandboxApp
  */
 angular.module('sandboxApp')
+  //works
   //.controller('MainCtrl', function ($scope, $interval, Restangular) {
+
+  //works
   .controller('MainCtrl', function (UsersSvc, $scope, $interval, Restangular) {
+
+  //doesn't work: Unknown provider: usersDataProvider <- usersData <- MainCtrl
+  //.controller('MainCtrl', function (usersData, UsersSvc, $scope, $interval, Restangular) {
     var vm = this;
     vm.currentSteps = 0;
     vm.goal = 0;
@@ -17,21 +23,25 @@ angular.module('sandboxApp')
     vm.currentPercentage = 0;
     vm.hungerScore = 100;
     vm.mood;
+    //vm.allUsers;
     vm.allUsers;
-    vm.test;
+    //vm.test;
 
 
     var startStepTracker = function() {
 
       //works
-      Restangular.all('users').getList().then(function(data){
-        vm.allUsers = data.plain();
-      });
+      //Restangular.all('users').getList().then(function(data){
+      //  vm.allUsers = data.plain();
+      //});
 
       //works
-      vm.test = UsersSvc.getList().then(function(data){
-        vm.test = data;
+      UsersSvc.getList().then(function(data){
+        vm.allUsers2 = data;
       });
+
+      //doesn't work: Unknown provider: usersDataProvider <- usersData <- MainCtrl
+      //vm.test = usersData;
 
       vm.currentSteps = 5000;
       vm.goal = 10000;

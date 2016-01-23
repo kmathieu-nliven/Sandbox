@@ -41,11 +41,5 @@ angular
         redirectTo: '/'
       });
 
-    //RestangularProvider.setBaseUrl('http://' + window.location.hostname + ':3000');
     RestangularProvider.setBaseUrl('http://localhost:3000');
   });
-//.config(function (RestangularProvider) {
-//  // provider configurations
-//  RestangularProvider.setBaseUrl('http://' + window.location.hostname + ':3000');
-//  RestangularProvider.setDefaultHttpFields({cache: true});
-//});

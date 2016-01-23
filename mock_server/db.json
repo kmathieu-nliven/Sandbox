@@ -2,12 +2,21 @@
   "users": [
     {
       "id": 1,
-      "currentSteps": 5000,
+      "currentSteps": 1000,
       "goal": 10000,
-      "stepBank": 7500,
+      "stepBank": 1400,
       "currentPercentage": 75,
       "hungerScore": 100,
       "mood": "happy"
+    },
+    {
+      "id": 2,
+      "currentSteps": 2500,
+      "goal": 10000,
+      "stepBank": 800,
+      "currentPercentage": 75,
+      "hungerScore": 20,
+      "mood": "hungry"
     }
   ]
 }
