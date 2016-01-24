@@ -4,22 +4,43 @@
       "id": 1,
       "currentSteps": 1000,
       "stepBank": 1400,
-      "hungerScore": 100,
-      "mood": "happy"
+      "hunger": {
+        "score": 3
+      },
+      "happiness": {
+        "score": 3
+      },
+      "mood": "happy",
+      "isSick": false,
+      "isDead": false
     },
     {
       "id": 2,
       "currentSteps": 2500,
       "stepBank": 800,
-      "hungerScore": 20,
-      "mood": "hungry"
+      "hunger": {
+        "score": 3
+      },
+      "happiness": {
+        "score": 3
+      },
+      "mood": "hungry",
+      "isSick": false,
+      "isDead": false
     },
     {
       "id": 3,
       "currentSteps": 4000,
       "stepBank": 400,
-      "hungerScore": 60,
-      "mood": "happy"
+      "hunger": {
+        "score": 3
+      },
+      "happiness": {
+        "score": 3
+      },
+      "mood": "happy",
+      "isSick": false,
+      "isDead": false
     }
   ]
 }
