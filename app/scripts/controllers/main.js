@@ -31,6 +31,7 @@ angular.module('sandboxApp')
 
     vm.currentPercentage;
     vm.moreUpdatesAvail = true;
+    vm.alerts = [];
 
     var currentUser;
 
@@ -75,22 +76,46 @@ angular.module('sandboxApp')
 
     vm.addSteps = function addSteps() {
       currentUser++;
+      var stepBankIncrease = allUsers[currentUser].currentSteps - allUsers[currentUser-1].currentSteps;
 
       vm.currentSteps = allUsers[currentUser].currentSteps;
-      vm.stepBank = allUsers[currentUser].stepBank;
+      //vm.stepBank = allUsers[currentUser].stepBank;
+      vm.stepBank += stepBankIncrease;
       vm.currentPercentage = vm.currentSteps / vm.goal * 100;
 
       vm.moreUpdatesAvail = currentUser < allUsers.length - 1;
     };
 
-    //todo:  add play with fitty
-    //todo:  add checks to not go in negatives
     vm.feedFitty = function feedFitty() {
-      vm.stepBank -= mealCost * vm.goal;
-      vm.hunger.score += 1;
+      if (vm.stepBank >= mealCost * vm.goal) {
+        vm.stepBank -= mealCost * vm.goal;
+        vm.hunger.score += 1;
+      } else {
+        addAlert('danger','Not enough steps to feed Fitty.');
+      }
     };
 
-    //$scope.$watch('vm.hunger.score', function (newHungerScore) {
+    vm.playWithFitty = function playWithFitty() {
+      if (vm.stepBank >= playCost * vm.goal) {
+        vm.stepBank -= playCost * vm.goal;
+        vm.happiness.score += 1;
+      } else {
+        addAlert('danger','Not enough steps to play with Fitty.');
+      }
+    };
+
+    //TODO:  Add water events
+
+
+    function addAlert(type, msg) {
+      var stepDelta = mealCost * vm.goal - vm.stepBank;
+      vm.alerts.push({type: 'danger', msg: msg + "  You need " + stepDelta + " more steps.  Get movin!"})
+    }
+
+    vm.closeAlert = function(index) {
+      vm.alerts.splice(index, 1);
+    };
+
     $scope.$watchGroup(['vm.hunger.score', 'vm.happiness.score'], function (newValues, oldValues, scope) {
 
       if (newValues[0] != oldValues[0]) {
@@ -136,7 +161,7 @@ angular.module('sandboxApp')
 
     });
 
-    function setMood() { //Use this later?
+    function setMood() {
       var moodOptions = ['Hungry', 'Hangry', 'Thirsty', 'Bored', 'Lonely', 'Happy'];
       //TODO:  set multiple options for different happiness/hunger levels to keep it interesting
 

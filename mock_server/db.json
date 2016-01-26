@@ -2,8 +2,8 @@
   "users": [
     {
       "id": 1,
-      "currentSteps": 1000,
-      "stepBank": 1400,
+      "currentSteps": 2500,
+      "stepBank": 2500,
       "hunger": {
         "score": 3
       },
@@ -16,7 +16,7 @@
     },
     {
       "id": 2,
-      "currentSteps": 2500,
+      "currentSteps": 3500,
       "stepBank": 800,
       "hunger": {
         "score": 3
@@ -30,7 +30,7 @@
     },
     {
       "id": 3,
-      "currentSteps": 4000,
+      "currentSteps": 7000,
       "stepBank": 400,
       "hunger": {
         "score": 3
