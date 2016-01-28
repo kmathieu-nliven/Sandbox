@@ -27,14 +27,18 @@
 
   <div class="jumbotron">
     <div class="fittySpot">
-      <!--&lt;!&ndash; fittyWaving &ndash;&gt;-->
-      <!--<div id="Stage" class="fittyWaving">-->
-      <!--</div>-->
-      <!--&lt;!&ndash; fittyChillin &ndash;&gt;-->
-      <!--<div id="Stage" class="fittyChillin">-->
-      <!--</div>-->
+      <!-- fittyWaving -->
+      <div ng-show="vm.showWavingFitty">
+        <div id="Stage" class="fittyWaving">
+        </div>
+      </div>
+      <!-- fittyChillin -->
+      <div ng-show="vm.showChillinFitty">
+        <div id="Stage" class="fittyChillin">
+        </div>
+      </div>
 
-      <div id="Stage" ng-class="vm.fittyVersion"></div>
+      <!--<div id="Stage" ng-class="vm.fittyVersion"></div>-->
     </div>
 
     <div>

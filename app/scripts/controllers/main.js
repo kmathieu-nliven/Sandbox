@@ -36,6 +36,8 @@ angular.module('sandboxApp')
     var chillinFitty = "fittyChillin";
     var wavingFitty = "fittyWaving";
     vm.fittyVersion = chillinFitty;
+    vm.showChillinFitty = true;
+    vm.showWavingFitty = false;
 
     var currentUser;
 
@@ -64,11 +66,16 @@ angular.module('sandboxApp')
     };
 
     vm.toggleFittyAnimation = function toggleFitty(){
-      if (vm.fittyVersion === chillinFitty) {
-        vm.fittyVersion = wavingFitty;
-      } else {
-        vm.fittyVersion = chillinFitty;
-      }
+
+      //if (vm.fittyVersion === chillinFitty) {
+      //  vm.fittyVersion = wavingFitty;
+      //} else {
+      //  vm.fittyVersion = chillinFitty;
+      //}
+
+      vm.showChillinFitty = !vm.showChillinFitty;
+      vm.showWavingFitty = !vm.showWavingFitty;
+
 
     };
 
