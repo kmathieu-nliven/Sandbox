@@ -33,6 +33,10 @@ angular.module('sandboxApp')
     vm.moreUpdatesAvail = true;
     vm.alerts = [];
 
+    var chillinFitty = "fittyChillin";
+    var wavingFitty = "fittyWaving";
+    vm.fittyVersion = chillinFitty;
+
     var currentUser;
 
     var mealCost = .2;
@@ -56,6 +60,15 @@ angular.module('sandboxApp')
         }, 4000, 3);
 
       });
+
+    };
+
+    vm.toggleFittyAnimation = function toggleFitty(){
+      if (vm.fittyVersion === chillinFitty) {
+        vm.fittyVersion = wavingFitty;
+      } else {
+        vm.fittyVersion = chillinFitty;
+      }
 
     };
 

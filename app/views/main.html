@@ -27,12 +27,18 @@
 
   <div class="jumbotron">
     <div class="fittySpot">
-      <!-- fittyWaving -->
-      <div id="Stage" class="fittyWaving">
-      </div>
-      <!-- fittyChillin -->
-      <div id="Stage" class="fittyChillin">
-      </div>
+      <!--&lt;!&ndash; fittyWaving &ndash;&gt;-->
+      <!--<div id="Stage" class="fittyWaving">-->
+      <!--</div>-->
+      <!--&lt;!&ndash; fittyChillin &ndash;&gt;-->
+      <!--<div id="Stage" class="fittyChillin">-->
+      <!--</div>-->
+
+      <div id="Stage" ng-class="vm.fittyVersion"></div>
+    </div>
+
+    <div>
+      <button ng-click="vm.toggleFittyAnimation()" class="btn btn-primary" type="button">Switch Fitty</button>
     </div>
 
 
