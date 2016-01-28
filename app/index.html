@@ -12,6 +12,24 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+
+    <!--Adobe Edge Runtime-->
+    <script type="text/javascript" charset="utf-8" src="http://animate.adobe.com/runtime/6.0.0/edge.6.0.0.min.js"></script>
+    <style>
+      .edgeLoad-fittyChillin { visibility:hidden; }
+    </style>
+    <script>
+      AdobeEdge.loadComposition('fittyChillin', 'fittyChillin', {
+        scaleToFit: "none",
+        centerStage: "horizontal",
+        minW: "0px",
+        maxW: "undefined",
+        width: "550px",
+        height: "400px"
+      }, {"dom":{}}, {"dom":{}});
+    </script>
+    <!--Adobe Edge Runtime End-->
+
     <!-- endbuild -->
   </head>
   <body ng-app="sandboxApp" ng-controller="MainCtrl as vm">
