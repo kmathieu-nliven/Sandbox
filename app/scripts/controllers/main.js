@@ -20,23 +20,30 @@ angular.module('sandboxApp')
     vm.currentSteps;
     vm.stepBank;
 
+    var mealCost = .2;
+    vm.mealCostSteps, vm.playCostSteps;
+    var playCost = .1;
+
     //life scores
-    vm.hunger = {};
-    vm.happiness = {};
+    //vm.hunger = {};
+    //vm.happiness = {};
     //vm.hunger.text;
     //vm.happiness.text;
-    vm.mood;
-    vm.isSick;
-    vm.isDead;
+    //vm.isSick;
+    //vm.isDead;
 
     var sadCount = 0;
     var sadDelay = 4000;
     var actionDelay = 3000;
+    vm.mood;
+    var actionCompleted;
+    var hungry = "Hungry";
+    var sad = "Sad";
+    var chillin = "Chillin'";
 
     vm.currentPercentage;
     vm.moreUpdatesAvail = true;
     vm.alerts = [];
-
 
     vm.showChillinFitty = false;
     vm.showWavingFitty = false;
@@ -47,17 +54,13 @@ angular.module('sandboxApp')
 
     var currentUser;
 
-    var mealCost = .2;
-    vm.mealCostSteps, vm.playCostSteps;
-    var playCost = .1;
-
     var init = function () {
 
       UsersSvc.getList().then(function (data) {
         allUsers = data;
       }).then(function () {
         initializeUserData(allUsers[0]);
-        vm.mood = "Chillin'";
+        vm.mood = chillin;
 
         $timeout(makeFittyHungryOrSad, sadDelay);
 
@@ -80,9 +83,9 @@ angular.module('sandboxApp')
     function makeFittyHungryOrSad(){
       sadCount++;
       if (sadCount % 3 == 2) {
-        vm.mood = "Sad";
+        vm.mood = sad;
       } else {
-        vm.mood = "Hungry";
+        vm.mood = hungry;
       }
       vm.fittySad();
     }
@@ -95,6 +98,8 @@ angular.module('sandboxApp')
       vm.showPlayingFitty = false;
       vm.showEatingFitty = false;
 
+      vm.mood = chillin;
+
       $timeout(makeFittyHungryOrSad, sadDelay);
 
     };
@@ -103,7 +108,6 @@ angular.module('sandboxApp')
       vm.showSadFitty = true;
       vm.showChillinFitty = false;
       vm.showWavingFitty = false;
-
       vm.showPlayingFitty = false;
       vm.showEatingFitty = false;
       vm.showDefaultFitty = false;
@@ -124,7 +128,6 @@ angular.module('sandboxApp')
       vm.showChillinFitty = false;
       vm.showWavingFitty = false;
       vm.showSadFitty = false;
-
       vm.showEatingFitty = false;
       vm.showDefaultFitty = false;
     };
@@ -135,7 +138,6 @@ angular.module('sandboxApp')
       vm.showWavingFitty = false;
       vm.showSadFitty = false;
       vm.showPlayingFitty = false;
-
       vm.showDefaultFitty = false;
     };
 
@@ -152,18 +154,18 @@ angular.module('sandboxApp')
     function initializeUserData(initialData) {
       vm.currentSteps = initialData.currentSteps;
       vm.stepBank = initialData.stepBank;
-      vm.hunger.score = initialData.hunger.score;
-      vm.happiness.score = initialData.happiness.score;
-      vm.mood = initialData.mood;
-      vm.isSick = initialData.isSick;
-      vm.isDead = initialData.isDead;
+      //vm.hunger.score = initialData.hunger.score;
+      //vm.happiness.score = initialData.happiness.score;
+      //vm.mood = initialData.mood;
+      //vm.isSick = initialData.isSick;
+      //vm.isDead = initialData.isDead;
 
       vm.currentPercentage = vm.currentSteps / vm.goal * 100;
       currentUser = 0;
       vm.playCostSteps = playCost * vm.goal;
       vm.mealCostSteps = mealCost * vm.goal;
 
-      setMood();
+      //setMood();
     }
 
     vm.addSteps = function addSteps() {
@@ -182,9 +184,13 @@ angular.module('sandboxApp')
 
       if (vm.stepBank >= vm.mealCostSteps) {
         vm.stepBank -= vm.mealCostSteps;
-        vm.hunger.score += 1;
+        //vm.hunger.score += 1;
         vm.fittyEat();
-        $timeout(vm.fittyDefault, actionDelay);
+        if (vm.mood==hungry) {
+          $timeout(vm.fittyDefault, actionDelay);
+        } else {
+          $timeout(vm.fittySad, actionDelay);
+        }
       } else {
         addAlert('danger','Not enough steps to feed Fitty.');
       }
@@ -194,9 +200,13 @@ angular.module('sandboxApp')
 
       if (vm.stepBank >= vm.playCostSteps) {
         vm.stepBank -= vm.playCostSteps;
-        vm.happiness.score += 1;
+        //vm.happiness.score += 1;
         vm.fittyPlay();
-        $timeout(vm.fittyDefault, actionDelay);
+        if (vm.mood==sad) {
+          $timeout(vm.fittyDefault, actionDelay);
+        } else {
+          $timeout(vm.fittySad, actionDelay);
+        }
       } else {
         addAlert('danger','Not enough steps to play with Fitty.');
       }
@@ -276,24 +286,24 @@ angular.module('sandboxApp')
     //
     //});
 
-    function setMood() {
-      var moodOptions = ['Hungry', 'Hangry', 'Thirsty', 'Bored', 'Lonely', 'Happy'];
-      //TODO:  set multiple options for different happiness/hunger levels to keep it interesting
-
-      if (vm.isSick) {
-        vm.mood = "Sick";
-      }
-      else if ((vm.hunger.text) && (vm.happiness.text)) {
-        vm.mood = vm.hunger.text + " and " + vm.happiness.text;
-        vm.fittyDefault();
-      } else if ((vm.hunger.text) || (vm.happiness.text)) {
-        vm.mood = vm.hunger.text.concat(vm.happiness.text);
-        vm.fittySad();
-      } else {
-        vm.mood = "Chillin'";
-      }
-
-    }
+    //function setMood() {
+    //  var moodOptions = ['Hungry', 'Hangry', 'Thirsty', 'Bored', 'Lonely', 'Happy'];
+    //  //TODO:  set multiple options for different happiness/hunger levels to keep it interesting
+    //
+    //  if (vm.isSick) {
+    //    vm.mood = "Sick";
+    //  }
+    //  else if ((vm.hunger.text) && (vm.happiness.text)) {
+    //    vm.mood = vm.hunger.text + " and " + vm.happiness.text;
+    //    vm.fittyDefault();
+    //  } else if ((vm.hunger.text) || (vm.happiness.text)) {
+    //    vm.mood = vm.hunger.text.concat(vm.happiness.text);
+    //    vm.fittySad();
+    //  } else {
+    //    vm.mood = "Chillin'";
+    //  }
+    //
+    //}
 
     init();
 
