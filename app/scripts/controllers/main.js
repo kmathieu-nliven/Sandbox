@@ -38,6 +38,7 @@ angular.module('sandboxApp')
     vm.fittyVersion = chillinFitty;
     vm.showChillinFitty = true;
     vm.showWavingFitty = false;
+    vm.showSadFitty = false;
 
     var currentUser;
 
@@ -65,18 +66,22 @@ angular.module('sandboxApp')
 
     };
 
-    vm.toggleFittyAnimation = function toggleFitty(){
+    vm.fittyDefault = function fittyDefault(){
+      vm.showChillinFitty = true;
+      vm.showWavingFitty = false;
+      vm.showSadFitty = false;
+    };
 
-      //if (vm.fittyVersion === chillinFitty) {
-      //  vm.fittyVersion = wavingFitty;
-      //} else {
-      //  vm.fittyVersion = chillinFitty;
-      //}
+    vm.fittySad = function fittySad(){
+      vm.showChillinFitty = false;
+      vm.showWavingFitty = false;
+      vm.showSadFitty = true;
+    };
 
-      vm.showChillinFitty = !vm.showChillinFitty;
-      vm.showWavingFitty = !vm.showWavingFitty;
-
-
+    vm.fittyWave = function fittyWave(){
+      vm.showChillinFitty = false;
+      vm.showWavingFitty = true;
+      vm.showSadFitty = false;
     };
 
     function initializeUserData(initialData) {

@@ -38,11 +38,23 @@
         </div>
       </div>
 
+      <!-- fittySad -->
+      <div ng-show="vm.showSadFitty">
+        <div id="Stage" class="fittySad">
+        </div>
+      </div>
+
       <!--<div id="Stage" ng-class="vm.fittyVersion"></div>-->
     </div>
 
     <div>
-      <button ng-click="vm.toggleFittyAnimation()" class="btn btn-primary" type="button">Switch Fitty</button>
+      <button ng-click="vm.fittyDefault()" class="btn btn-primary" type="button">Normal Fitty</button>
+    </div>
+    <div>
+      <button ng-click="vm.fittyWave()" class="btn btn-primary" type="button">Waving Fitty</button>
+    </div>
+    <div>
+      <button ng-click="vm.fittySad()" class="btn btn-primary" type="button">Sad Fitty</button>
     </div>
 
 
