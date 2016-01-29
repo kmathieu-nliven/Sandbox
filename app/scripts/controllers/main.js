@@ -36,12 +36,12 @@ angular.module('sandboxApp')
     var chillinFitty = "fittyChillin";
     var wavingFitty = "fittyWaving";
     vm.fittyVersion = chillinFitty;
-    vm.showChillinFitty = true;
+    vm.showChillinFitty = false;
     vm.showWavingFitty = false;
     vm.showSadFitty = false;
     vm.showPlayingFitty = false;
     vm.showEatingFitty = false;
-    vm.showDefaultFitty = false;
+    vm.showDefaultFitty = true;
 
     var currentUser;
 
