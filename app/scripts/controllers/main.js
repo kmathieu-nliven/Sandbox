@@ -186,6 +186,7 @@ angular.module('sandboxApp')
     };
 
     //TODO:  Add water events
+    //TODO:  ADD reset button
 
 
     function addAlert(type, msg) {

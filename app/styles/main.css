@@ -7,6 +7,7 @@
 
 body {
   padding: 0;
+  background-color: lightblue;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -19,7 +20,7 @@ body {
 
 /* Custom page header */
 .header {
-  border-bottom: 1px solid #e5e5e5;
+  /*border-bottom: 1px solid #e5e5e5;*/
   margin-bottom: 10px;
   width: 700px;
 }
@@ -80,7 +81,8 @@ body {
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
-    background-color: #3AC;
+    background-color: lightblue;
+    /*background-color: #3AC;*/
     /*background-color: white;*/
 
   }
@@ -98,7 +100,7 @@ body {
   position: relative;
   height: 400px;
   background-color: white;
-
+  overflow: hidden;
 }
 
 @media screen and (min-width:768px){
@@ -118,6 +120,9 @@ body {
 
 .navbar {
   width: 700px;
+  /*background-color: lightblue;*/
+  background-color: transparent;
+  border: none;
 }
 
 @font-face {
@@ -127,6 +132,14 @@ body {
 
 .myFitPet {
   font-family: myFitPet;
-  font-size: 36px;
+  font-size: 48px;
+}
+
+.buttonsMainText {
+
+}
+
+.buttonsSubText {
+  font-size: 14px;
 }
 
