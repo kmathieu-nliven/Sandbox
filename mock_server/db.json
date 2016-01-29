@@ -2,8 +2,8 @@
   "users": [
     {
       "id": 1,
-      "currentSteps": 2500,
-      "stepBank": 7000,
+      "currentSteps": 1500,
+      "stepBank": 1500,
       "hunger": {
         "score": 2
       },
@@ -17,7 +17,7 @@
     {
       "id": 2,
       "currentSteps": 3500,
-      "stepBank": 800,
+      "stepBank": 3000,
       "hunger": {
         "score": 2
       },
@@ -31,7 +31,35 @@
     {
       "id": 3,
       "currentSteps": 7000,
-      "stepBank": 400,
+      "stepBank": 2500,
+      "hunger": {
+        "score": 2
+      },
+      "happiness": {
+        "score": 3
+      },
+      "mood": "happy",
+      "isSick": false,
+      "isDead": false
+    },
+    {
+      "id": 4,
+      "currentSteps": 8900,
+      "stepBank": 800,
+      "hunger": {
+        "score": 2
+      },
+      "happiness": {
+        "score": 3
+      },
+      "mood": "happy",
+      "isSick": false,
+      "isDead": false
+    },
+    {
+      "id": 5,
+      "currentSteps": 10001,
+      "stepBank": 1500,
       "hunger": {
         "score": 2
       },

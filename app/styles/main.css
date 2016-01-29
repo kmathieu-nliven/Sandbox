@@ -143,3 +143,20 @@ body {
   font-size: 14px;
 }
 
+.mood {
+  margin: 20px 0 20px 0;
+}
+
+.bank {
+  margin-top: 20px;
+  float: left;
+}
+
+.resetButton {
+  color: #777;
+  font-weight: lighter;
+  font-size: 14px;
+  float: left;
+  margin-top: 80px;
+}
+

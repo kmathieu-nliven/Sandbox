@@ -20,9 +20,9 @@ angular.module('sandboxApp')
     vm.currentSteps;
     vm.stepBank;
 
-    var mealCost = .2;
+    var mealCost = .1;
     vm.mealCostSteps, vm.playCostSteps;
-    var playCost = .1;
+    var playCost = .05;
 
     //life scores
     //vm.hunger = {};
@@ -178,6 +178,11 @@ angular.module('sandboxApp')
       vm.currentPercentage = vm.currentSteps / vm.goal * 100;
 
       vm.moreUpdatesAvail = currentUser < allUsers.length - 1;
+    };
+
+    vm.resetFitty = function resetFitty(){
+      initializeUserData(allUsers[0]);
+      vm.fittyDefault();
     };
 
     vm.feedFitty = function feedFitty() {
