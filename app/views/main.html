@@ -55,11 +55,19 @@
         <div id="Stage" class="fittyEating">
         </div>
       </div>
+
+      <!-- fittyDefault -->
+      <div ng-show="vm.showDefaultFitty">
+        <div id="Stage" class="fittyDefault">
+        </div>
+      </div>
+
+
       <!--<div id="Stage" ng-class="vm.fittyVersion"></div>-->
     </div>
 
     <div>
-      <button ng-click="vm.fittyDefault()" class="btn btn-primary" type="button">Normal Fitty</button>
+      <button ng-click="vm.fittyChilling()" class="btn btn-primary" type="button">Original Fitty</button>
     </div>
     <div>
       <button ng-click="vm.fittyWave()" class="btn btn-primary" type="button">Waving Fitty</button>
@@ -72,6 +80,9 @@
     </div>
     <div>
       <button ng-click="vm.fittyEat()" class="btn btn-primary" type="button">Feed Fitty</button>
+    </div>
+    <div>
+      <button ng-click="vm.fittyDefault()" class="btn btn-primary" type="button">Default Fitty</button>
     </div>
     <!-- Static fitty -->
     <!--<img src="images/blue_blob_pet.png" alt="Fitty"><br>-->

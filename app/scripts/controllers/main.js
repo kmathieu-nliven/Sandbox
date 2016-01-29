@@ -41,6 +41,7 @@ angular.module('sandboxApp')
     vm.showSadFitty = false;
     vm.showPlayingFitty = false;
     vm.showEatingFitty = false;
+    vm.showDefaultFitty = false;
 
     var currentUser;
 
@@ -69,11 +70,12 @@ angular.module('sandboxApp')
     };
 
     vm.fittyDefault = function fittyDefault(){
-      vm.showChillinFitty = true;
+      vm.showChillinFitty = false;
       vm.showWavingFitty = false;
       vm.showSadFitty = false;
       vm.showPlayingFitty = false;
       vm.showEatingFitty = false;
+      vm.showDefaultFitty = true;
     };
 
     vm.fittySad = function fittySad(){
@@ -82,6 +84,7 @@ angular.module('sandboxApp')
       vm.showSadFitty = true;
       vm.showPlayingFitty = false;
       vm.showEatingFitty = false;
+      vm.showDefaultFitty = false;
     };
 
     vm.fittyWave = function fittyWave(){
@@ -90,6 +93,7 @@ angular.module('sandboxApp')
       vm.showSadFitty = false;
       vm.showPlayingFitty = false;
       vm.showEatingFitty = false;
+      vm.showDefaultFitty = false;
     };
 
     vm.fittyPlay = function fittyPlay(){
@@ -98,6 +102,7 @@ angular.module('sandboxApp')
       vm.showSadFitty = false;
       vm.showPlayingFitty = true;
       vm.showEatingFitty = false;
+      vm.showDefaultFitty = false;
     };
 
     vm.fittyEat = function fittyEat(){
@@ -106,6 +111,16 @@ angular.module('sandboxApp')
       vm.showSadFitty = false;
       vm.showPlayingFitty = false;
       vm.showEatingFitty = true;
+      vm.showDefaultFitty = false;
+    };
+
+    vm.fittyChilling = function fittyChilling(){
+      vm.showChillinFitty = true;
+      vm.showWavingFitty = false;
+      vm.showSadFitty = false;
+      vm.showPlayingFitty = false;
+      vm.showEatingFitty = false;
+      vm.showDefaultFitty = false;
     };
 
     function initializeUserData(initialData) {
