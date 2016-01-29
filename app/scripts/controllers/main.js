@@ -39,6 +39,7 @@ angular.module('sandboxApp')
     vm.showChillinFitty = true;
     vm.showWavingFitty = false;
     vm.showSadFitty = false;
+    vm.showPlayingFitty = false;
 
     var currentUser;
 
@@ -70,18 +71,28 @@ angular.module('sandboxApp')
       vm.showChillinFitty = true;
       vm.showWavingFitty = false;
       vm.showSadFitty = false;
+      vm.showPlayingFitty = false;
     };
 
     vm.fittySad = function fittySad(){
       vm.showChillinFitty = false;
       vm.showWavingFitty = false;
       vm.showSadFitty = true;
+      vm.showPlayingFitty = false;
     };
 
     vm.fittyWave = function fittyWave(){
       vm.showChillinFitty = false;
       vm.showWavingFitty = true;
       vm.showSadFitty = false;
+      vm.showPlayingFitty = false;
+    };
+
+    vm.fittyPlay = function fittyPlay(){
+      vm.showChillinFitty = false;
+      vm.showWavingFitty = false;
+      vm.showSadFitty = false;
+      vm.showPlayingFitty = true;
     };
 
     function initializeUserData(initialData) {

@@ -69,6 +69,24 @@
     </script>
     <!--Adobe Edge Runtime End-->
 
+    <!-- fittyPlaying -->
+    <!--Adobe Edge Runtime-->
+    <!--<script type="text/javascript" charset="utf-8" src="http://animate.adobe.com/runtime/6.0.0/edge.6.0.0.min.js"></script>-->
+    <style>
+      .edgeLoad-fittyPlaying { visibility:hidden; }
+    </style>
+    <script>
+      AdobeEdge.loadComposition('fittyPlaying', 'fittyPlaying', {
+        scaleToFit: "none",
+        centerStage: "none",
+        minW: "0px",
+        maxW: "undefined",
+        width: "550px",
+        height: "400px"
+      }, {"dom":{}}, {"dom":{}});
+    </script>
+    <!--Adobe Edge Runtime End-->
+
     <!-- endbuild -->
   </head>
   <body ng-app="sandboxApp" ng-controller="MainCtrl as vm">

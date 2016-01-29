@@ -44,6 +44,12 @@
         </div>
       </div>
 
+      <!-- fittyPlaying -->
+      <div ng-show="vm.showPlayingFitty">
+        <div id="Stage" class="fittyPlaying">
+        </div>
+      </div>
+
       <!--<div id="Stage" ng-class="vm.fittyVersion"></div>-->
     </div>
 
@@ -56,8 +62,9 @@
     <div>
       <button ng-click="vm.fittySad()" class="btn btn-primary" type="button">Sad Fitty</button>
     </div>
-
-
+    <div>
+      <button ng-click="vm.fittyPlay()" class="btn btn-primary" type="button">Playing Fitty</button>
+    </div>
     <!-- Static fitty -->
     <!--<img src="images/blue_blob_pet.png" alt="Fitty"><br>-->
 
