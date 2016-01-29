@@ -154,6 +154,7 @@ angular.module('sandboxApp')
       if (vm.stepBank >= mealCost * vm.goal) {
         vm.stepBank -= mealCost * vm.goal;
         vm.hunger.score += 1;
+        vm.fittyEat();
       } else {
         addAlert('danger','Not enough steps to feed Fitty.');
       }
@@ -163,6 +164,7 @@ angular.module('sandboxApp')
       if (vm.stepBank >= playCost * vm.goal) {
         vm.stepBank -= playCost * vm.goal;
         vm.happiness.score += 1;
+        vm.fittyPlay();
       } else {
         addAlert('danger','Not enough steps to play with Fitty.');
       }
