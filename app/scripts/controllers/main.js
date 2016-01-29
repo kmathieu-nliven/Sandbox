@@ -10,7 +10,7 @@
 angular.module('sandboxApp')
 
   //works
-  .controller('MainCtrl', function (UsersSvc, $scope, $interval, Restangular) {
+  .controller('MainCtrl', function (UsersSvc, $scope, $interval, Restangular, $timeout) {
 
     var vm = this;
     vm.goal = 10000;
@@ -46,6 +46,7 @@ angular.module('sandboxApp')
     var currentUser;
 
     var mealCost = .2;
+    vm.mealCostSteps, vm.playCostSteps;
     var playCost = .1;
 
     var init = function () {
@@ -56,13 +57,15 @@ angular.module('sandboxApp')
         initializeUserData(allUsers[0]);
 
         $interval(function () {
-          //TODO: Don't let this run during bedtime
-          vm.hunger.score -= 1;
+          if (vm.hunger.score > 0) {
+            vm.hunger.score -= 1;
+          }
         }, 3000, 3);
 
         $interval(function () {
-          //TODO: Don't let this run during bedtime
-          vm.happiness.score -= 1;
+          if (vm.happiness.score > 0) {
+            vm.happiness.score -= 1;
+          }
         }, 4000, 3);
 
       });
@@ -70,26 +73,29 @@ angular.module('sandboxApp')
     };
 
     vm.fittyDefault = function fittyDefault(){
+      vm.showDefaultFitty = true;
       vm.showChillinFitty = false;
       vm.showWavingFitty = false;
       vm.showSadFitty = false;
       vm.showPlayingFitty = false;
       vm.showEatingFitty = false;
-      vm.showDefaultFitty = true;
+
     };
 
     vm.fittySad = function fittySad(){
+      vm.showSadFitty = true;
       vm.showChillinFitty = false;
       vm.showWavingFitty = false;
-      vm.showSadFitty = true;
+
       vm.showPlayingFitty = false;
       vm.showEatingFitty = false;
       vm.showDefaultFitty = false;
     };
 
     vm.fittyWave = function fittyWave(){
-      vm.showChillinFitty = false;
       vm.showWavingFitty = true;
+      vm.showChillinFitty = false;
+
       vm.showSadFitty = false;
       vm.showPlayingFitty = false;
       vm.showEatingFitty = false;
@@ -97,25 +103,28 @@ angular.module('sandboxApp')
     };
 
     vm.fittyPlay = function fittyPlay(){
+      vm.showPlayingFitty = true;
       vm.showChillinFitty = false;
       vm.showWavingFitty = false;
       vm.showSadFitty = false;
-      vm.showPlayingFitty = true;
+
       vm.showEatingFitty = false;
       vm.showDefaultFitty = false;
     };
 
     vm.fittyEat = function fittyEat(){
+      vm.showEatingFitty = true;
       vm.showChillinFitty = false;
       vm.showWavingFitty = false;
       vm.showSadFitty = false;
       vm.showPlayingFitty = false;
-      vm.showEatingFitty = true;
+
       vm.showDefaultFitty = false;
     };
 
     vm.fittyChilling = function fittyChilling(){
       vm.showChillinFitty = true;
+
       vm.showWavingFitty = false;
       vm.showSadFitty = false;
       vm.showPlayingFitty = false;
@@ -134,6 +143,8 @@ angular.module('sandboxApp')
 
       vm.currentPercentage = vm.currentSteps / vm.goal * 100;
       currentUser = 0;
+      vm.playCostSteps = playCost * vm.goal;
+      vm.mealCostSteps = mealCost * vm.goal;
 
       setMood();
     }
@@ -151,20 +162,24 @@ angular.module('sandboxApp')
     };
 
     vm.feedFitty = function feedFitty() {
-      if (vm.stepBank >= mealCost * vm.goal) {
-        vm.stepBank -= mealCost * vm.goal;
+
+      if (vm.stepBank >= vm.mealCostSteps) {
+        vm.stepBank -= vm.mealCostSteps;
         vm.hunger.score += 1;
         vm.fittyEat();
+        $timeout(vm.fittyDefault, 2000);
       } else {
         addAlert('danger','Not enough steps to feed Fitty.');
       }
     };
 
     vm.playWithFitty = function playWithFitty() {
-      if (vm.stepBank >= playCost * vm.goal) {
-        vm.stepBank -= playCost * vm.goal;
+
+      if (vm.stepBank >= vm.playCostSteps) {
+        vm.stepBank -= vm.playCostSteps;
         vm.happiness.score += 1;
         vm.fittyPlay();
+        $timeout(vm.fittyDefault, 2000);
       } else {
         addAlert('danger','Not enough steps to play with Fitty.');
       }
@@ -195,10 +210,10 @@ angular.module('sandboxApp')
             //vm.happiness.score -= 1;  //TODO: FIGURE THIS OUT
             vm.hunger.text = 'Starving';
             break;
-          case 2:
-            vm.isDead = false;
-            vm.hunger.text = 'Hungry';
-            break;
+          //case 2:
+          //  vm.isDead = false;
+          //  vm.hunger.text = 'Hungry';
+          //  break;
           default:
             vm.isDead = false;
             vm.hunger.text = '';
@@ -209,12 +224,14 @@ angular.module('sandboxApp')
 
         switch (newHappinessScore) {
           case 0:
-            vm.isDead = true;
-            break;
-          case 1:
+            //vm.isDead = true;
             vm.isDead = false;
             vm.happiness.text = 'Sad';
             break;
+          //case 1:
+          //  vm.isDead = false;
+          //  vm.happiness.text = 'Sad';
+          //  break;
           default:
             vm.isDead = false;
             vm.happiness.text = '';
@@ -239,7 +256,7 @@ angular.module('sandboxApp')
       } else if ((vm.hunger.text) || (vm.happiness.text)) {
         vm.mood = vm.hunger.text.concat(vm.happiness.text);
       } else {
-        vm.mood = "Elated";
+        vm.mood = "Overjoyed!";
       }
 
     }
