@@ -161,6 +161,10 @@ body {
   color: #343434;
 }
 
+.waterDrop {
+  width: 50px;
+}
+
 .resetButton {
   color: #777;
   font-weight: lighter;

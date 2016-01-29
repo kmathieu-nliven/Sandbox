@@ -48,6 +48,12 @@
         </div>
       </div>
 
+      <!-- fittyWaving -->
+      <div ng-show="vm.showWavingFitty==true">
+        <div id="Stage" class="fittyWaving">
+        </div>
+      </div>
+
       <!-- fittyDefault -->
       <div ng-show="vm.showDefaultFitty==true">
         <div id="Stage" class="fittyDefault">
@@ -64,12 +70,12 @@
     <!--</div>-->
 
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-md-6">
         <button ng-click="vm.feedFitty()" class="btn btn-primary" type="button">Feed Fitty
           <div class="buttonsSubText">{{vm.mealCostSteps}} steps</div>
         </button>
       </div>
-      <div class="col-md-5">
+      <div class="col-md-6">
         <button ng-click="vm.playWithFitty()" class="btn btn-primary" type="button">Play With Fitty
           <div class="buttonsSubText">{{vm.playCostSteps}} steps</div>
         </button>
@@ -81,9 +87,18 @@
     </div>
 
     <div>
-      <button type="button" class="btn btn-link btn-xs resetButton" ng-click="vm.resetFitty()">reset</button>
+      <button ng-click="vm.logWater()" class="btn btn-primary" type="button">Log Water
+        <div class="buttonsSubText">Free!</div>
+      </button>
     </div>
 
+    <div ng-if="vm.waterCount > 0">
+      <img class="waterDrop" ng-repeat="i in vm.getWaterCount(vm.logWater) track by $index" src="/images/waterDrop.png">
+    </div>
+
+    <div>
+      <button type="button" class="btn btn-link btn-xs resetButton" ng-click="vm.resetFitty()">reset</button>
+    </div>
 
   </div>
 </div>

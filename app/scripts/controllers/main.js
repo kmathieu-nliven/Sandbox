@@ -23,6 +23,7 @@ angular.module('sandboxApp')
     var mealCost = .1;
     vm.mealCostSteps, vm.playCostSteps;
     var playCost = .05;
+    vm.waterCount = 0;
 
     //life scores
     //vm.hunger = {};
@@ -35,6 +36,8 @@ angular.module('sandboxApp')
     var sadCount = 0;
     var sadDelay = 4000;
     var actionDelay = 3000;
+    var hungrySadTimeout;
+
     vm.mood;
     var actionCompleted;
     var hungry = "Hungry";
@@ -100,7 +103,7 @@ angular.module('sandboxApp')
 
       vm.mood = chillin;
 
-      $timeout(makeFittyHungryOrSad, sadDelay);
+      hungrySadTimeout = $timeout(makeFittyHungryOrSad, sadDelay);
 
     };
 
@@ -154,6 +157,7 @@ angular.module('sandboxApp')
     function initializeUserData(initialData) {
       vm.currentSteps = initialData.currentSteps;
       vm.stepBank = initialData.stepBank;
+      vm.waterCount = initialData.waterCount;
       //vm.hunger.score = initialData.hunger.score;
       //vm.happiness.score = initialData.happiness.score;
       //vm.mood = initialData.mood;
@@ -167,6 +171,17 @@ angular.module('sandboxApp')
 
       //setMood();
     }
+
+    vm.logWater = function logWater() {
+      vm.waterCount++;
+      $timeout.cancel(hungrySadTimeout);
+      vm.fittyWave();
+      $timeout(vm.fittyDefault, actionDelay);
+    };
+
+    vm.getWaterCount = function getWaterCount(count){
+      return new Array(vm.waterCount);
+    };
 
     vm.addSteps = function addSteps() {
       currentUser++;
@@ -190,8 +205,11 @@ angular.module('sandboxApp')
       if (vm.stepBank >= vm.mealCostSteps) {
         vm.stepBank -= vm.mealCostSteps;
         //vm.hunger.score += 1;
-        vm.fittyEat();
         if (vm.mood==hungry) {
+          vm.mood = chillin;
+        }
+        vm.fittyEat();
+        if (vm.mood==chillin) {
           $timeout(vm.fittyDefault, actionDelay);
         } else {
           $timeout(vm.fittySad, actionDelay);
@@ -206,8 +224,11 @@ angular.module('sandboxApp')
       if (vm.stepBank >= vm.playCostSteps) {
         vm.stepBank -= vm.playCostSteps;
         //vm.happiness.score += 1;
-        vm.fittyPlay();
         if (vm.mood==sad) {
+          vm.mood = chillin;
+        }
+        vm.fittyPlay();
+        if (vm.mood==chillin) {
           $timeout(vm.fittyDefault, actionDelay);
         } else {
           $timeout(vm.fittySad, actionDelay);
@@ -218,7 +239,6 @@ angular.module('sandboxApp')
     };
 
     //TODO:  Add water events
-    //TODO:  ADD reset button
 
     function addAlert(type, msg) {
       var stepDelta = mealCost * vm.goal - vm.stepBank;

@@ -4,6 +4,7 @@
       "id": 1,
       "currentSteps": 1500,
       "stepBank": 1500,
+      "waterCount": 0,
       "hunger": {
         "score": 2
       },
@@ -18,6 +19,7 @@
       "id": 2,
       "currentSteps": 3500,
       "stepBank": 3000,
+      "waterCount": 0,
       "hunger": {
         "score": 2
       },
@@ -32,6 +34,7 @@
       "id": 3,
       "currentSteps": 7000,
       "stepBank": 2500,
+      "waterCount": 0,
       "hunger": {
         "score": 2
       },
@@ -46,6 +49,7 @@
       "id": 4,
       "currentSteps": 8900,
       "stepBank": 800,
+      "waterCount": 0,
       "hunger": {
         "score": 2
       },
@@ -60,6 +64,7 @@
       "id": 5,
       "currentSteps": 10001,
       "stepBank": 1500,
+      "waterCount": 0,
       "hunger": {
         "score": 2
       },
