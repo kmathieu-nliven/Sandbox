@@ -29,13 +29,15 @@ angular.module('sandboxApp')
     vm.isSick;
     vm.isDead;
 
+    var sadCount = 0;
+    var sadDelay = 4000;
+    var actionDelay = 3000;
+
     vm.currentPercentage;
     vm.moreUpdatesAvail = true;
     vm.alerts = [];
 
-    var chillinFitty = "fittyChillin";
-    var wavingFitty = "fittyWaving";
-    vm.fittyVersion = chillinFitty;
+
     vm.showChillinFitty = false;
     vm.showWavingFitty = false;
     vm.showSadFitty = false;
@@ -55,22 +57,35 @@ angular.module('sandboxApp')
         allUsers = data;
       }).then(function () {
         initializeUserData(allUsers[0]);
+        vm.mood = "Chillin'";
 
-        $interval(function () {
-          if (vm.hunger.score > 0) {
-            vm.hunger.score -= 1;
-          }
-        }, 3000, 3);
+        $timeout(makeFittyHungryOrSad, sadDelay);
 
-        $interval(function () {
-          if (vm.happiness.score > 0) {
-            vm.happiness.score -= 1;
-          }
-        }, 5000, 3);
+        //$interval(function () {
+        //  if (vm.hunger.score > 0) {
+        //    vm.hunger.score -= 1;
+        //  }
+        //}, 3000, 3);
+        //
+        //$interval(function () {
+        //  if (vm.happiness.score > 0) {
+        //    vm.happiness.score -= 1;
+        //  }
+        //}, 5000, 3);
 
       });
 
     };
+
+    function makeFittyHungryOrSad(){
+      sadCount++;
+      if (sadCount % 3 == 2) {
+        vm.mood = "Sad";
+      } else {
+        vm.mood = "Hungry";
+      }
+      vm.fittySad();
+    }
 
     vm.fittyDefault = function fittyDefault(){
       vm.showDefaultFitty = true;
@@ -79,6 +94,8 @@ angular.module('sandboxApp')
       vm.showSadFitty = false;
       vm.showPlayingFitty = false;
       vm.showEatingFitty = false;
+
+      $timeout(makeFittyHungryOrSad, sadDelay);
 
     };
 
@@ -167,7 +184,7 @@ angular.module('sandboxApp')
         vm.stepBank -= vm.mealCostSteps;
         vm.hunger.score += 1;
         vm.fittyEat();
-        $timeout(vm.fittyDefault, 2000);
+        $timeout(vm.fittyDefault, actionDelay);
       } else {
         addAlert('danger','Not enough steps to feed Fitty.');
       }
@@ -179,7 +196,7 @@ angular.module('sandboxApp')
         vm.stepBank -= vm.playCostSteps;
         vm.happiness.score += 1;
         vm.fittyPlay();
-        $timeout(vm.fittyDefault, 2000);
+        $timeout(vm.fittyDefault, actionDelay);
       } else {
         addAlert('danger','Not enough steps to play with Fitty.');
       }
@@ -187,7 +204,6 @@ angular.module('sandboxApp')
 
     //TODO:  Add water events
     //TODO:  ADD reset button
-
 
     function addAlert(type, msg) {
       var stepDelta = mealCost * vm.goal - vm.stepBank;
@@ -198,66 +214,67 @@ angular.module('sandboxApp')
       vm.alerts.splice(index, 1);
     };
 
-    $scope.$watchGroup(['vm.hunger.score', 'vm.happiness.score'], function (newValues, oldValues, scope) {
-
-      if (newValues[0] != oldValues[0]) {
-        var newHungerScore = newValues[0];
-        switch (newHungerScore) {
-          case 0:
-            //vm.isDead = true;
-            vm.isDead = false;
-            vm.hunger.text = 'Starving';
-            vm.fittySad();
-            break;
-          //case 1:
-          //  vm.isDead = false;
-          //  vm.hunger.text = 'Starving';
-          //  break;
-          //case 2:
-          //  vm.isDead = false;
-          //  vm.hunger.text = 'Hungry';
-          //  break;
-          default:
-            vm.isDead = false;
-            vm.hunger.text = '';
-        }
-      }
-      if (newValues[1] != oldValues[1]) {
-        var newHappinessScore = newValues[1];
-
-        switch (newHappinessScore) {
-          case 0:
-            //vm.isDead = true;
-            vm.isDead = false;
-            vm.happiness.text = 'Sad';
-            vm.fittySad();
-            break;
-          case 1:
-          //  vm.isDead = false;
-          //  vm.happiness.text = 'Sad';
-          //  break;
-          default:
-            vm.isDead = false;
-            vm.happiness.text = '';
-        }
-
-      }
-      if ((newHappinessScore == 0) || (newHungerScore == 0)){
-        vm.fittySad();
-      }
-
-
-      //if ((newHappinessScore > 0) && (newHungerScore > 0)){
-      //  //$timeout(vm.fittyDefault, 2000);
-      //  //vm.fittyDefault();
-      //} else {
-      //  //$timeout(vm.fittySad, 2000);
-      //  //vm.fittySad();
-      //}
-      setMood();
-
-
-    });
+    //$scope.$watchGroup(['vm.hunger.score', 'vm.happiness.score'], function (newValues, oldValues, scope) {
+    //  //todo: maybe set sad score and have watch on that
+    //
+    //  if (newValues[0] != oldValues[0]) {
+    //    var newHungerScore = newValues[0];
+    //    switch (newHungerScore) {
+    //      case 0:
+    //        //vm.isDead = true;
+    //        vm.isDead = false;
+    //        vm.hunger.text = 'Starving';
+    //        vm.fittySad();
+    //        break;
+    //      //case 1:
+    //      //  vm.isDead = false;
+    //      //  vm.hunger.text = 'Starving';
+    //      //  break;
+    //      //case 2:
+    //      //  vm.isDead = false;
+    //      //  vm.hunger.text = 'Hungry';
+    //      //  break;
+    //      default:
+    //        vm.isDead = false;
+    //        vm.hunger.text = '';
+    //    }
+    //  }
+    //  if (newValues[1] != oldValues[1]) {
+    //    var newHappinessScore = newValues[1];
+    //
+    //    switch (newHappinessScore) {
+    //      case 0:
+    //        //vm.isDead = true;
+    //        vm.isDead = false;
+    //        vm.happiness.text = 'Sad';
+    //        vm.fittySad();
+    //        break;
+    //      case 1:
+    //      //  vm.isDead = false;
+    //      //  vm.happiness.text = 'Sad';
+    //      //  break;
+    //      default:
+    //        vm.isDead = false;
+    //        vm.happiness.text = '';
+    //    }
+    //
+    //  }
+    //  if ((newHappinessScore == 0) || (newHungerScore == 0)){
+    //    vm.fittySad();
+    //  }
+    //
+    //
+    //  //if ((newHappinessScore > 0) && (newHungerScore > 0)){
+    //  //  //$timeout(vm.fittyDefault, 2000);
+    //  //  //vm.fittyDefault();
+    //  //} else {
+    //  //  //$timeout(vm.fittySad, 2000);
+    //  //  //vm.fittySad();
+    //  //}
+    //  setMood();
+    //
+    //
+    //});
 
     function setMood() {
       var moodOptions = ['Hungry', 'Hangry', 'Thirsty', 'Bored', 'Lonely', 'Happy'];
