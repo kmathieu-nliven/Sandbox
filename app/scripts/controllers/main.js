@@ -40,6 +40,7 @@ angular.module('sandboxApp')
     vm.showWavingFitty = false;
     vm.showSadFitty = false;
     vm.showPlayingFitty = false;
+    vm.showEatingFitty = false;
 
     var currentUser;
 
@@ -72,6 +73,7 @@ angular.module('sandboxApp')
       vm.showWavingFitty = false;
       vm.showSadFitty = false;
       vm.showPlayingFitty = false;
+      vm.showEatingFitty = false;
     };
 
     vm.fittySad = function fittySad(){
@@ -79,6 +81,7 @@ angular.module('sandboxApp')
       vm.showWavingFitty = false;
       vm.showSadFitty = true;
       vm.showPlayingFitty = false;
+      vm.showEatingFitty = false;
     };
 
     vm.fittyWave = function fittyWave(){
@@ -86,6 +89,7 @@ angular.module('sandboxApp')
       vm.showWavingFitty = true;
       vm.showSadFitty = false;
       vm.showPlayingFitty = false;
+      vm.showEatingFitty = false;
     };
 
     vm.fittyPlay = function fittyPlay(){
@@ -93,6 +97,15 @@ angular.module('sandboxApp')
       vm.showWavingFitty = false;
       vm.showSadFitty = false;
       vm.showPlayingFitty = true;
+      vm.showEatingFitty = false;
+    };
+
+    vm.fittyEat = function fittyEat(){
+      vm.showChillinFitty = false;
+      vm.showWavingFitty = false;
+      vm.showSadFitty = false;
+      vm.showPlayingFitty = false;
+      vm.showEatingFitty = true;
     };
 
     function initializeUserData(initialData) {
