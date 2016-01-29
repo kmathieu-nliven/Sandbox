@@ -18,7 +18,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
 
    //=========================================================
    
-   //Edge symbol: 'fittyPlaying_symbol_1'
+   //Edge symbol: 'fittyPlaying2_symbol_1'
    (function(symbolName) {   
    
       Symbol.bindTriggerAction(compId, symbolName, "Default Timeline", 875, function(sym, e) {
@@ -27,7 +27,7 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
       });
       //Edge binding end
 
-   })("fittyPlaying");
-   //Edge symbol end:'fittyPlaying'
+   })("fittyPlaying2_symbol_1");
+   //Edge symbol end:'fittyPlaying2_symbol_1'
 
 })(window.jQuery || AdobeEdge.$, AdobeEdge, "fittyPlaying");
