@@ -3,12 +3,12 @@
     {
       "id": 1,
       "currentSteps": 2500,
-      "stepBank": 2500,
+      "stepBank": 7000,
       "hunger": {
-        "score": 3
+        "score": 2
       },
       "happiness": {
-        "score": 3
+        "score": 2
       },
       "mood": "happy",
       "isSick": false,
@@ -19,10 +19,10 @@
       "currentSteps": 3500,
       "stepBank": 800,
       "hunger": {
-        "score": 3
+        "score": 2
       },
       "happiness": {
-        "score": 3
+        "score": 2
       },
       "mood": "hungry",
       "isSick": false,
@@ -33,7 +33,7 @@
       "currentSteps": 7000,
       "stepBank": 400,
       "hunger": {
-        "score": 3
+        "score": 2
       },
       "happiness": {
         "score": 3

@@ -66,7 +66,7 @@ angular.module('sandboxApp')
           if (vm.happiness.score > 0) {
             vm.happiness.score -= 1;
           }
-        }, 4000, 3);
+        }, 5000, 3);
 
       });
 
@@ -203,13 +203,15 @@ angular.module('sandboxApp')
         var newHungerScore = newValues[0];
         switch (newHungerScore) {
           case 0:
-            vm.isDead = true;
-            break;
-          case 1:
+            //vm.isDead = true;
             vm.isDead = false;
-            //vm.happiness.score -= 1;  //TODO: FIGURE THIS OUT
             vm.hunger.text = 'Starving';
+            vm.fittySad();
             break;
+          //case 1:
+          //  vm.isDead = false;
+          //  vm.hunger.text = 'Starving';
+          //  break;
           //case 2:
           //  vm.isDead = false;
           //  vm.hunger.text = 'Hungry';
@@ -227,8 +229,9 @@ angular.module('sandboxApp')
             //vm.isDead = true;
             vm.isDead = false;
             vm.happiness.text = 'Sad';
+            vm.fittySad();
             break;
-          //case 1:
+          case 1:
           //  vm.isDead = false;
           //  vm.happiness.text = 'Sad';
           //  break;
@@ -238,7 +241,18 @@ angular.module('sandboxApp')
         }
 
       }
+      if ((newHappinessScore == 0) || (newHungerScore == 0)){
+        vm.fittySad();
+      }
 
+
+      //if ((newHappinessScore > 0) && (newHungerScore > 0)){
+      //  //$timeout(vm.fittyDefault, 2000);
+      //  //vm.fittyDefault();
+      //} else {
+      //  //$timeout(vm.fittySad, 2000);
+      //  //vm.fittySad();
+      //}
       setMood();
 
 
@@ -253,10 +267,12 @@ angular.module('sandboxApp')
       }
       else if ((vm.hunger.text) && (vm.happiness.text)) {
         vm.mood = vm.hunger.text + " and " + vm.happiness.text;
+        vm.fittyDefault();
       } else if ((vm.hunger.text) || (vm.happiness.text)) {
         vm.mood = vm.hunger.text.concat(vm.happiness.text);
+        vm.fittySad();
       } else {
-        vm.mood = "Overjoyed!";
+        vm.mood = "Chillin'";
       }
 
     }

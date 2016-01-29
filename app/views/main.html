@@ -1,4 +1,3 @@
-
 <div class="container-fluid">
   <div class="row">
 
@@ -21,13 +20,13 @@
     <div class="fittySpot">
       <!-- fittyWaving -->
       <!--<div ng-show="vm.showWavingFitty">-->
-        <!--<div id="Stage" class="fittyWaving">-->
-        <!--</div>-->
+      <!--<div id="Stage" class="fittyWaving">-->
+      <!--</div>-->
       <!--</div>-->
       <!--&lt;!&ndash; fittyChillin &ndash;&gt;-->
       <!--<div ng-show="vm.showChillinFitty">-->
-        <!--<div id="Stage" class="fittyChillin">-->
-        <!--</div>-->
+      <!--<div id="Stage" class="fittyChillin">-->
+      <!--</div>-->
       <!--</div>-->
 
       <!-- fittySad -->
@@ -59,33 +58,32 @@
     </div>
 
     <!--<div>-->
-      <!--<button ng-click="vm.fittyChilling()" class="btn btn-primary" type="button">Original Fitty</button>-->
+    <!--<button ng-click="vm.fittyChilling()" class="btn btn-primary" type="button">Original Fitty</button>-->
     <!--</div>-->
     <!--<div>-->
-      <!--<button ng-click="vm.fittyWave()" class="btn btn-primary" type="button">Waving Fitty</button>-->
+    <!--<button ng-click="vm.fittyWave()" class="btn btn-primary" type="button">Waving Fitty</button>-->
     <!--</div>-->
-    <div class="row">
-    <div class="col-md-6">
-      <button ng-click="vm.fittySad()" class="btn btn-primary" type="button">Sad Fitty</button>
-    </div>
-    <div class="col-md-6">
-      <button ng-click="vm.fittyPlay()" class="btn btn-primary" type="button">Playing Fitty</button>
-    </div>
-    </div>
-      <div class="row">
-    <div class="col-md-6">
-      <button ng-click="vm.fittyEat()" class="btn btn-primary" type="button">Feed Fitty</button>
-    </div>
-    <div class="col-md-6">
-      <button ng-click="vm.fittyDefault()" class="btn btn-primary" type="button">Default Fitty</button>
-    </div>
-      </div>
+    <!--<div class="row">-->
+      <!--<div class="col-md-6">-->
+        <!--<button ng-click="vm.fittySad()" class="btn btn-primary" type="button">Sad Fitty</button>-->
+      <!--</div>-->
+      <!--<div class="col-md-6">-->
+        <!--<button ng-click="vm.fittyPlay()" class="btn btn-primary" type="button">Playing Fitty</button>-->
+      <!--</div>-->
+    <!--</div>-->
+    <!--<div class="row">-->
+      <!--<div class="col-md-6">-->
+        <!--<button ng-click="vm.fittyEat()" class="btn btn-primary" type="button">Feed Fitty</button>-->
+      <!--</div>-->
+      <!--<div class="col-md-6">-->
+        <!--<button ng-click="vm.fittyDefault()" class="btn btn-primary" type="button">Default Fitty</button>-->
+      <!--</div>-->
+    <!--</div>-->
     <!-- Static fitty -->
     <!--<img src="images/blue_blob_pet.png" alt="Fitty"><br>-->
-
+    <h3>Fitty's {{vm.mood}}</h3>
     <div class="row">
       <div class="col-md-6"><h3>Step bank: {{vm.stepBank}}</h3></div>
-      <div class="col-md-6"><h3>Fitty is {{vm.mood}}</h3></div>
     </div>
     <div class="row">
       <div class="col-md-5"><h6>Hunger Score: {{vm.hunger.score}}</h6></div>
@@ -95,10 +93,12 @@
 
     <div class="row">
       <div class="col-md-5">
-        <button ng-click="vm.feedFitty()" class="btn btn-primary" type="button">Feed Fitty <span>{{vm.mealCostSteps}} steps</span></button>
+        <button ng-click="vm.feedFitty()" class="btn btn-primary" type="button">Feed Fitty <span>{{vm.mealCostSteps}} steps</span>
+        </button>
       </div>
       <div class="col-md-5">
-        <button ng-click="vm.playWithFitty()" class="btn btn-primary" type="button">Play With Fitty <span>{{vm.playCostSteps}} steps</span></button>
+        <button ng-click="vm.playWithFitty()" class="btn btn-primary" type="button">Play With Fitty <span>{{vm.playCostSteps}} steps</span>
+        </button>
       </div>
     </div>
 

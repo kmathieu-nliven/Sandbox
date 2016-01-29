@@ -21,6 +21,7 @@ body {
 .header {
   border-bottom: 1px solid #e5e5e5;
   margin-bottom: 10px;
+  width: 700px;
 }
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
@@ -79,6 +80,9 @@ body {
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
     border-bottom: 0;
+    background-color: #3AC;
+    /*background-color: white;*/
+
   }
 }
 
@@ -92,7 +96,37 @@ body {
 
 .fittySpot {
   position: relative;
-  height: 450px;
+  height: 400px;
+  background-color: white;
 
+}
+
+@media screen and (min-width:768px){
+  .navbar-brand-centered {
+    position: absolute;
+    left: 50%;
+    display: block;
+    /*width: 160px;*/
+    text-align: center;
+    /*background-color: #eee;*/
+  }
+  .navbar>.container .navbar-brand-centered,
+  .navbar>.container-fluid .navbar-brand-centered {
+    margin-left: -80px;
+  }
+}
+
+.navbar {
+  width: 700px;
+}
+
+@font-face {
+  font-family: myFitPet;
+  src: url("/styles/KBZipaDeeDooDah.ttf");
+}
+
+.myFitPet {
+  font-family: myFitPet;
+  font-size: 36px;
 }
 
