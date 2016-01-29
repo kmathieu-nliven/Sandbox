@@ -133,6 +133,18 @@ body {
 .myFitPet {
   font-family: myFitPet;
   font-size: 48px;
+  color: #343434;
+}
+
+
+
+.goal {
+  color: #343434;
+}
+
+.mood {
+  margin: 20px 0 20px 0;
+  color: #343434;
 }
 
 .buttonsMainText {
@@ -143,19 +155,16 @@ body {
   font-size: 14px;
 }
 
-.mood {
-  margin: 20px 0 20px 0;
-}
-
 .bank {
   margin-top: 20px;
   float: left;
+  color: #343434;
 }
 
 .resetButton {
   color: #777;
   font-weight: lighter;
-  font-size: 14px;
+  font-size: 12px;
   float: left;
   margin-top: 80px;
 }
