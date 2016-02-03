@@ -166,6 +166,7 @@ angular.module('sandboxApp')
 
       vm.currentPercentage = vm.currentSteps / vm.goal * 100;
       currentUser = 0;
+      sadCount = 0;
       vm.playCostSteps = playCost * vm.goal;
       vm.mealCostSteps = mealCost * vm.goal;
 

@@ -84,6 +84,7 @@ body {
     background-color: lightblue;
     /*background-color: #3AC;*/
     /*background-color: white;*/
+    padding-top: 30px;
 
   }
 }
@@ -132,7 +133,7 @@ body {
 
 .myFitPet {
   font-family: myFitPet;
-  font-size: 48px;
+  font-size: 56px;
   color: #343434;
 }
 
@@ -147,9 +148,6 @@ body {
   color: #343434;
 }
 
-.buttonsMainText {
-
-}
 
 .buttonsSubText {
   font-size: 14px;
@@ -171,5 +169,11 @@ body {
   font-size: 12px;
   float: left;
   margin-top: 80px;
+}
+
+.buttonGroup {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px dotted #343434;
 }
 
